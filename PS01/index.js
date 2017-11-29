@@ -221,7 +221,7 @@ d3.csv('./data.csv', function(dataIn){
     scaleX.domain(["What age do you think you will stop Dancing?", "Why do you think you will stop dancing?", "What will be the most serious challenge you will face when you stop dancing?"])
             .range([0, width/3, 2*width/3]);
 
-        
+
         //Axis for "What AGE do you think you will stop dancing?"
         scaleY1.domain([0, d3.max(dataIn.map(function (d) {
             return +d.C12STPCR
@@ -437,6 +437,7 @@ d3.csv('./data.csv', function(dataIn){
     drawPointsFormer(formerDancers);
     drawCirclesCurrent(currentDancers);
     drawCirclesFormer(formerDancers);
+    drawAxes(currentDancers)
 
     });
 
@@ -444,7 +445,6 @@ d3.csv('./data.csv', function(dataIn){
 
 
 function drawAxes (data) {
-
 
     svg.append("g")
         .attr('class', 'xaxis')
@@ -458,19 +458,25 @@ function drawAxes (data) {
     //Axis for "What AGE do you think you will stop dancing?"
     svg.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY1));
+        .call(d3.axisLeft(scaleY1))
+        .attr('fill', 'none')
+        .attr('stroke-width', '0px');
 
     //Axis for "Why do you think you will stop dancing?"
     svg.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY2))
+        .call(d3.axisRight(scaleY2))
+        .attr('fill', 'none')
+        .attr('stroke-width', '0px')
         .attr('transform', 'translate(' + width / 3 + ',0)');
 
 
     //Axis for "What Challenges do you think will be most serious?"
     svg.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY3))
+        .call(d3.axisRight(scaleY3))
+        .attr('fill', 'none')
+        .attr('stroke-width', '0px')
         .attr('transform', 'translate(' + 2 * width / 3 + ',0)');
 
 
@@ -486,25 +492,33 @@ function drawAxes (data) {
     //Axis for "What age did you expect to stop Dancing?
     svg2.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY1_2));
+        .call(d3.axisLeft(scaleY1_2))
+        .attr('fill', 'none')
+        .attr('stroke-width', '0px');
 
     //"What age did you actually  stop Dancing?"
     svg2.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY2_2))
+        .call(d3.axisRight(scaleY2_2))
+        .attr('fill', 'none')
+        .attr('stroke-width', '0px')
         .attr('transform', 'translate(' + width / 3 + ',0)');
 
     //Axis for Why did you think you would stop dancing?
     svg2.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY3_2))
+        .call(d3.axisRight(scaleY3_2))
+        .attr('fill', 'none')
+        .attr('stroke-width', '0px')
         .attr('transform', 'translate(' + 2 * width / 3 + ',0)');
 
 
     //Axis for "What was the most serious challenge you will faced when you stopped dancing?"
     svg2.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY4_2))
+        .call(d3.axisRight(scaleY4_2))
+        .attr('fill', 'none')
+        .attr('stroke-width', '0px')
         .attr('transform', 'translate(' + width + ',0)');
 
 }
@@ -523,7 +537,6 @@ function drawAxes (data) {
         var pathMap= pathData.forEach(function (d) {
             Map.set(d.value, d.data);
         });
-
 
 
         var lineGen= d3.line()
