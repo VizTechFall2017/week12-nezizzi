@@ -455,7 +455,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY2))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' +(width / 3) -50 + ',0)');
+        .attr('transform', 'translate(' + ((width / 3)-50) + ',0)');
 
 
     //Axis for "What Challenges do you think will be most serious?"
@@ -464,7 +464,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY3))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + (2 * width / 3)-50 + ',0)');
+        .attr('transform', 'translate(' + ((2*width / 3)-50) + ',0)');
 
 
 
@@ -489,7 +489,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY2_2))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + width / 3 + ',0)');
+        .attr('transform', 'translate(' + ((width / 3)-50) + ',0)');
 
     //Axis for Why did you think you would stop dancing?
     svg2.append("g")
@@ -497,7 +497,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY3_2))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + 2 * width / 3 + ',0)');
+        .attr('transform', 'translate(' + ((2*width / 3)-50) + ',0)');
 
 
     //Axis for "What was the most serious challenge you will faced when you stopped dancing?"
@@ -506,7 +506,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY4_2))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + width + ',0)');
+        .attr('transform', 'translate(' + (width -50) + ',0)');
 
 }
 
