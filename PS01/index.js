@@ -213,7 +213,7 @@ d3.csv('./data.csv', function(dataIn){
 
 
     scaleX.domain(["What age do you think you will stop Dancing?", "Why do you think you will stop dancing?", "What will be the most serious challenge you will face when you stop dancing?"])
-            .range([0,(width / 3) -50, (2 * width / 3) -50]);
+            .range([0,(2*width / 3) -50, width -50]);
         //Axis for "What AGE do you think you will stop dancing?"
         scaleY1.domain([0, d3.max(dataIn.map(function (d) {
             return +d.C12STPCR
@@ -455,7 +455,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY2))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + ((width / 3)-50) + ',0)');
+        .attr('transform', 'translate(' + ((2*width / 3)-50) + ',0)');
 
 
     //Axis for "What Challenges do you think will be most serious?"
@@ -464,7 +464,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY3))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + ((2*width / 3)-50) + ',0)');
+        .attr('transform', 'translate(' + (width -50) + ',0)');
 
 
 
@@ -486,7 +486,7 @@ function drawAxes (data) {
     //"What age did you actually  stop Dancing?"
     svg2.append("g")
         .attr('class', 'yaxis')
-        .call(d3.axisRight(scaleY2_2))
+        .call(d3.axisRight(scaleY1_2))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
         .attr('transform', 'translate(' + ((width / 3)-50) + ',0)');
