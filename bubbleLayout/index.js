@@ -15,6 +15,16 @@ d3.csv('./banks.csv', function(banks){
 
     console.log(banks);
 
+    countryList = banks.map(function(d){return d.country});
+
+    console.log(countryList);
+
+    uniqueList = countryList.filter(function (d, i, a) {
+        return a.indexOf(d) == i;
+    });
+
+    console.log(uniqueList);
+
 });
 
 

@@ -26,9 +26,6 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-svg.append('text')
-    .text('Current Dancers')
-    .attr("transform", "translate(" + width + "," + height/2 + ")");
 
 var svg2 = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -37,9 +34,6 @@ var svg2 = d3.select("body").append("svg")
     .attr('class', 'svg2')
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg2.append('text')
-    .text('Former Dancers')
-    .attr("transform", "translate(" + width + "," + height/2 + ")");
 
 var svg3 = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -219,9 +213,7 @@ d3.csv('./data.csv', function(dataIn){
 
 
     scaleX.domain(["What age do you think you will stop Dancing?", "Why do you think you will stop dancing?", "What will be the most serious challenge you will face when you stop dancing?"])
-            .range([0, width/3, 2*width/3]);
-
-
+            .range([0,(width / 3) -50, (2 * width / 3) -50]);
         //Axis for "What AGE do you think you will stop dancing?"
         scaleY1.domain([0, d3.max(dataIn.map(function (d) {
             return +d.C12STPCR
@@ -232,41 +224,36 @@ d3.csv('./data.csv', function(dataIn){
             return Map3.get(d.C13STOP1)
         }));
 
-
         //Axis for "What Challenges do you think will be most serious?"
         scaleY3.domain(dataIn.map(function (d) {
             return Map4.get(d.C15BMSCH)
         }));
 
 
+
         scaleX_2.domain(["What age did you expect to stop Dancing?", "What age did you actually stop Dancing?", "Why did you stop dancing?", "What was the most serious challenge you will faced when you stopped dancing?"])
-            .range([0, width / 3, 2 * width / 3, width]);
+            .range([0, (width / 3) -50, (2 * width / 3) -50, width-50]);
 
+            //Axis for "What age did you expect to stop Dancing?
+            scaleY1_2.domain([0, d3.max(dataIn.map(function (d) {
+                return +d.F12AEXFN
+            }))]);
 
+            //"What age did you actually  stop Dancing?"
+            //console.log(d3.max(dataIn.map(function(d) {return +d.F12BFNCR})));
+            scaleY2_2.domain([0, d3.max(dataIn.map(function (d) {
+                return +d.F12BFNCR
+            }))]);
 
-        //Axis for "What age did you expect to stop Dancing?
-        scaleY1_2.domain([0, d3.max(dataIn.map(function (d) {
-            return +d.F12AEXFN
-        }))]);
+            //Axis for Why did you think you would stop dancing?
+            scaleY3_2.domain(dataIn.map(function (d) {
+                return Map5.get(d.F13STOP1)
+            }));
 
-        //"What age did you actually  stop Dancing?"
-        //console.log(d3.max(dataIn.map(function(d) {return +d.F12BFNCR})));
-        scaleY2_2.domain([0, d3.max(dataIn.map(function (d) {
-            return +d.F12BFNCR
-        }))]);
-
-//F12BFNCR
-        //Axis for Why did you think you would stop dancing?
-        scaleY3_2.domain(dataIn.map(function (d) {
-            return Map5.get(d.F13STOP1)
-        }));
-
-
-
-        //Axis for "What was the most serious challenge you will faced when you stopped dancing?"
-        scaleY4_2.domain(dataIn.map(function (d) {
-            return Map6.get(d.F15BMSCH)
-        }));
+            //Axis for "What was the most serious challenge you will faced when you stopped dancing?"
+            scaleY4_2.domain(dataIn.map(function (d) {
+                return Map6.get(d.F15BMSCH)
+            }));
 
 
 
@@ -468,7 +455,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY2))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + width / 3 + ',0)');
+        .attr('transform', 'translate(' +(width / 3) -50 + ',0)');
 
 
     //Axis for "What Challenges do you think will be most serious?"
@@ -477,7 +464,7 @@ function drawAxes (data) {
         .call(d3.axisRight(scaleY3))
         .attr('fill', 'none')
         .attr('stroke-width', '0px')
-        .attr('transform', 'translate(' + 2 * width / 3 + ',0)');
+        .attr('transform', 'translate(' + (2 * width / 3)-50 + ',0)');
 
 
 
